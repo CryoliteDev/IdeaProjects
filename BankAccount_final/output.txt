@@ -1,0 +1,68 @@
+MUHAMMAD-AZHAR 
+CISC 3115-MW9
+
+**************************
+	Database of Accounts
+**************************
+
+Account    Balance   
+--------------------
+123456   | $ 200.55 
+123487   | $ 234.34 
+234876   | $ 894.00 
+783478   | $ 194.03 
+234648   | $ 838.39 
+235389   | $ 637.34 
+--------------------
+
+Error: C is an invalid selection -  try again
+
+Transaction Requested: Account Inquiry
+Account Number: 123487
+Current Balance: $234.34
+
+Transaction Requested: Account Inquiry
+Error: The account number: 123856 does not exist.
+
+Transaction Requested: Deposit
+Old Balance:  $ 838.39
+Amount to Deposit: $88.0
+New Balance: $926.39
+
+Error: The account number: 123484 does not exist.
+
+Error: A negative number was entered $ -56.04
+
+Transaction Requested: Withdrawal
+Old Balance:  $ 926.39
+Amount to Withdraw: $38.39
+New Balance: $888.0
+
+Error: The account number: 234987 does not exist.
+
+Error: A negative number was entered $ -94.03
+
+Error: You do not have sufficient funds to make a withdrawal $ 250.00
+
+Transaction: Add Interest
+Old Balance:  $ 194.03
+Amount of Interest: $1699.7028
+New Balance: $1893.7328
+
+Transaction: Add Interest
+Error: The account number: 237898 does not exist.
+
+
+**************************
+	Database of Accounts
+**************************
+
+Account    Balance   
+--------------------
+123456   | $ 200.55 
+123487   | $ 234.34 
+234876   | $ 894.00 
+783478   | $1893.73 
+234648   | $ 888.00 
+235389   | $ 637.34 
+--------------------

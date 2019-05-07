@@ -1,0 +1,10 @@
+Nomaan     Khalid    126-41-2556 123456 Checking  200.55 Open
+Muhammad   Azhar     128-43-7763 123487 Savings   234.34   Open
+Hero       Saitama   127-48-1256 234876 Checking   94.00   Closed
+Cyborg     Genos     128-34-6377 783478 CD        994.03   Open
+Atomic     Samurai   127-64-5612 234648 Checking  838.39   Open
+Metal      Bat       128-34-7363 235389 Savings   637.34   Open
+Akito      Takagi    145-64-6765 675783 Savings   736.74   Closed
+Moritaka   Mashiro   654-73-9645 134098 Checking  443.38   Open
+Miho       Azuki     654-37-4695 890431 CD        833.44   Closed
+Eren       Yeaer     465-76-4569 345766 CD         28.76   Open

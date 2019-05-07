@@ -1,0 +1,124 @@
+MUHAMMAD-AZHAR 
+CISC 3115-MW9
+						**********************************
+							Database of Account Accounts
+						**********************************
+
+First Name       Last Name        Account Type   SSN           Account    Balance    Status  
+---------------------------------------------------------------------------------------------
+Nomaan         | Khalid         | Checking     | 126-41-2556 | 123456   | $ 200.55 | Open        
+Muhammad       | Azhar          | Savings      | 128-43-7763 | 123487   | $ 234.34 | Open        
+Hero           | Saitama        | Checking     | 127-48-1256 | 234876   | $  94.00 | Closed      
+Cyborg         | Genos          | CD           | 128-34-6377 | 783478   | $ 994.03 | Open        
+Atomic         | Samurai        | Checking     | 127-64-5612 | 234648   | $ 838.39 | Open        
+Metal          | Bat            | Savings      | 128-34-7363 | 235389   | $ 637.34 | Open        
+Akito          | Takagi         | Savings      | 145-64-6765 | 675783   | $ 736.74 | Closed      
+Moritaka       | Mashiro        | Checking     | 654-73-9645 | 134098   | $ 443.38 | Open        
+Miho           | Azuki          | CD           | 654-37-4695 | 890431   | $ 833.44 | Closed      
+Eren           | Yeaer          | CD           | 465-76-4569 | 345766   | $  28.76 | Open        
+
+Transaction Requested: Balance Inquiry
+Account Number: 123456
+Current Balance: $200.55
+
+Transaction Requested: Balance Inquiry
+Account Number: 776321
+Error: Account number 776321 does not exist
+
+
+Transaction Requested: Deposit
+Account Number: 123487
+Old Balance: $234.34
+Amount to Deposit: $638.65
+New Balance: $872.99
+
+Transaction Requested: Reopen Account
+REOPENING Account: 234876
+
+
+Transaction Requested: Deposit
+Account Number: 234876
+Old Balance: $94.00
+Amount to Deposit: $10.0
+New Balance: $104.00
+
+Transaction Requested: Deposit
+Error: Account number 786231 does not exist
+
+Transaction Requested: Withdrawal
+Account Number: 234648
+Old Balance: $838.39
+Amount to Withdraw: $80.0
+New Balance: $758.39
+Withdrawal Successful
+
+
+Transaction Requested: Withdrawal
+Account Number: 783478
+Error, Withdrawal amount: $1000.00 is higher than account balance of: $994.03
+
+
+Transaction Requested: Withdrawal
+Error: Account number 876324 does not exist
+
+
+Transaction Requested: Account Information
+Account Owner: Metal Bat
+Account Type: Savings
+Account Number: 235389
+Social Security Number: 128-34-7363
+Account Balance: $637.34
+
+
+Transaction Requested: Account Information
+Error: Account with SSN of 456-68-7939 does not exist
+
+
+
+Transaction Requested:  New Account
+Account Request: New Account Information
+Owner: Light Yagami
+Social Security Number: 746-23-0392
+Account Type: Savings
+Account 767731 Created
+
+
+Transaction Requested:  New Account
+Account Request: New Account Information
+Owner: Levi Ackerman
+Social Security Number: 898-43-0498
+Account Type: Checking
+Account 798431 Created
+
+Transaction Requested:  New Account
+Error: Account Number: 890431 Already Exists
+
+Transaction Requested: Deposit
+Account Number: 767731
+Old Balance: $0.00
+Amount to Deposit: $498.0
+New Balance: $498.00
+
+Transaction Requested: Deposit
+Account Number: 798431
+Old Balance: $0.00
+Amount to Deposit: $500.0
+New Balance: $500.00
+
+Transaction Requested: Deposit
+Account Number: 345766
+Old Balance: $28.76
+Amount to Deposit: $450.0
+New Balance: $478.76
+
+Transaction Requested: Withdrawal
+Account Number: 798431
+Old Balance: $500.00
+Amount to Withdraw: $250.0
+New Balance: $250.00
+Withdrawal Successful
+
+
+Transaction Requested: Withdrawal
+Error: Account number 656783 does not exist
+

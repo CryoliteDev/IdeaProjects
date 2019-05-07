@@ -1,0 +1,197 @@
+MUHAMMAD-AZHAR 
+CISC 5115-MW9
+
+						*******************************
+							Database of Bank Accounts
+						*******************************
+
+First Name       Last Name         Account Type        SSN            Account    Balance          
+------------------------------------------------------------------------------------------
+Nomaan          |  Khalid          |  Checking      |  126-41-2556  | 123456    | $ 200.55 
+Muhammad        |  Azhar           |  Savings       |  128-43-7763  | 123487    | $ 234.34 
+Hero            |  Saitama         |  Checking      |  127-48-1256  | 234876    | $  94.00 
+Shoyo           |  Hinata          |  CD            |  128-34-6377  | 783478    | $ 994.03 
+Atomic          |  Samurai         |  Checking      |  127-64-5612  | 234648    | $ 838.39 
+Akito           |  Takagi          |  Savings       |  145-64-6765  | 235389    | $ 637.34 
+Moritaka        |  Mashiro         |  Checking      |  654-73-9645  | 675783    | $ 736.74 
+Miho            |  Azuki           |  CD            |  654-37-4695  | 134098    | $ 443.38 
+Eren            |  Yeager          |  CD            |  465-76-4569  | 890431    | $ 833.44 
+Metal           |  Bat             |  Savings       |  128-34-7363  | 345766    | $  28.76 
+
+Transaction Requested: Balance Inquiry
+Account Number: 783478
+Current Balance: $994.03
+
+Transaction Requested: Balance Inquiry
+Error: Account number 123478 does not exist
+
+
+Transaction Requested: Deposit
+Account Number: 234876
+Old Balance: $94.00
+Amount to Deposit: $390.0
+New Balance: $484.00
+
+
+Transaction Requested: Deposit
+Account Number: 123487
+Amount to Deposit: $-400.0
+Error: $-400.00 is an invalid amount
+
+
+Transaction Requested: Deposit
+Error: Account number 236776 does not exist
+
+
+Transaction Requested: Withdrawal
+Account Number: 783478
+Old Balance: $994.03
+Amount to Withdraw: $200.0
+New Balance: $794.03
+
+
+Transaction Requested: Withdrawal
+Account Number: 234876
+Error: $-50.00 is an invalid amount
+
+
+Transaction Requested: Withdrawal
+Account Number: 235389
+Error, Withdrawal Amount: $670.65 is higher than your balance of 637.34
+
+
+Transaction Requested: Withdrawal
+Error: Account number: 654321 does not exist.
+
+
+
+Transaction Requested: Account Information
+Account Owner: Shoyo Hinata
+Account Type: CD
+Account Number: 783478
+Social Security Number: 128-34-6377
+Account Balance: $794.03
+
+
+
+Transaction Requested: Account Information
+Error: Account with the SSN of: 125-23-1234 does not exist
+
+Transaction Requested: New Account
+Accounts Request: New Account Information
+Owner: Tobio Kageyama
+Social Security Number: 123-65-7834
+Account Type: Savings
+Account Number: 435679 Created
+
+
+Transaction Requested: New Account
+Accounts Request: New Account Information
+Owner: Chikara Ennoshita
+Social Security Number: 457-67-2345
+Account Type: Checking
+Account Number: 764386 Created
+
+
+Transaction Requested: New Account
+Accounts Request: New Account Information
+Owner: Yu Nishinoya
+Social Security Number: 344-78-8976
+Account Type: CD
+Account Number: 765432 Created
+
+Transaction Requested: New Account
+Error: Account Number: 123456 is an Invalid Account Number
+
+
+Transaction Requested: Deposit
+Account Number: 435679
+Old Balance: $0.00
+Amount to Deposit: $435.0
+New Balance: $435.00
+
+
+Transaction Requested: Deposit
+Account Number: 764386
+Old Balance: $0.00
+Amount to Deposit: $300.0
+New Balance: $300.00
+
+
+Transaction Requested: Deposit
+Account Number: 765432
+Old Balance: $0.00
+Amount to Deposit: $662.0
+New Balance: $662.00
+
+
+Transaction Requested: Withdrawal
+Account Number: 764386
+Old Balance: $300.00
+Amount to Withdraw: $150.0
+New Balance: $150.00
+
+Transaction Requested: Balance Inquiry
+Account Number: 764386
+Current Balance: $150.00
+
+
+Transaction Requested: Withdrawal
+Account Number: 435679
+Error: $-400.00 is an invalid amount
+
+Transaction Requested: Delete Account
+Account Number: 123456
+This account has a remaining balance of 200.55 please empty the balance and retry
+
+
+Transaction Requested: Withdrawal
+Account Number: 123456
+Old Balance: $200.55
+Amount to Withdraw: $200.55
+New Balance: $0.00
+
+Transaction Requested: Delete Account
+Account Number: 123456 has been successfully deleted
+
+
+Transaction Requested: Withdrawal
+Account Number: 234876
+Old Balance: $484.00
+Amount to Withdraw: $484.0
+New Balance: $0.00
+
+
+Transaction Requested: Withdrawal
+Account Number: 234648
+Old Balance: $838.39
+Amount to Withdraw: $838.39
+New Balance: $0.00
+
+Transaction Requested: Delete Account
+Account Number: 234876 has been successfully deleted
+
+Transaction Requested: Delete Account
+Account Number: 234648 has been successfully deleted
+
+Error: "C" is an invalid selection -  try again
+
+Error: "Y" is an invalid selection -  try again
+
+						*******************************
+							Database of Bank Accounts
+						*******************************
+
+First Name       Last Name         Account Type        SSN            Account    Balance          
+------------------------------------------------------------------------------------------
+Muhammad        |  Azhar           |  Savings       |  128-43-7763  | 123487    | $ 234.34 
+Shoyo           |  Hinata          |  CD            |  128-34-6377  | 783478    | $ 794.03 
+Akito           |  Takagi          |  Savings       |  145-64-6765  | 235389    | $ 637.34 
+Moritaka        |  Mashiro         |  Checking      |  654-73-9645  | 675783    | $ 736.74 
+Miho            |  Azuki           |  CD            |  654-37-4695  | 134098    | $ 443.38 
+Eren            |  Yeager          |  CD            |  465-76-4569  | 890431    | $ 833.44 
+Metal           |  Bat             |  Savings       |  128-34-7363  | 345766    | $  28.76 
+Tobio           |  Kageyama        |  Savings       |  123-65-7834  | 435679    | $ 435.00 
+Chikara         |  Ennoshita       |  Checking      |  457-67-2345  | 764386    | $ 150.00 
+Yu              |  Nishinoya       |  CD            |  344-78-8976  | 765432    | $ 662.00 
+

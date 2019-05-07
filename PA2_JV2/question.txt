@@ -1,0 +1,4 @@
+Write a program to copy a file (“input.txt”) to the other file (“output.txt”), and also replace all letter ‘o’
+by digit 0. And also count number of words in the input file and write the results into the last line of output
+file. In order to test your program, you need to create input.txt and type some sentences or paragraphs in it
+before you run the program.

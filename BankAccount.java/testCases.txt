@@ -1,0 +1,206 @@
+B 123456
+B 776321
+D 123487 638.65
+D 234876 10.00
+D 786231
+W 234648 80.00
+W 783478 1000
+W 876324
+I 128-34-7363
+I 456-68-7939
+N 767731 Light Yagami 746-23-0392 Savings
+N 798431 Levi Ackerman 898-43-0498 Checking
+N 890431
+D 767731 498.00
+W 234876 104.00
+X 234876
+D 798431 500
+D 345766 450.00
+W 798431 250
+X 123456
+W 123456 200.55
+X 123456
+X 4936799
+C
+Y
+Q
+
+D 767731 498.00
+
+
+W 656783
+
+B 123456
+B 123545678
+D 235389 638.65
+D 236776
+D 123487 -400.00
+D 234876 390
+B 123478
+B 783478
+N 767731 Light Yagami 746-23-0393 Checking
+D 765432 600.00
+D 123478 298.00
+X 123456
+W 123456 200.55
+X 123456
+D 767731 600
+C
+Y
+Q
+N 767731 Light Yagami 746-23-0393 Checking
+
+123456 Checking  200.55
+123487 Savings   234.34
+234876 Checking   94.00
+783478 CD        994.03
+234648 Checking  838.39
+235389 Savings   637.34
+675783 Savings   736.74
+134098 Checking  443.38
+890431 CD        833.44
+345766 CD         28.76
+
+Transaction Requested: Balance Inquiry
+Account Number: 123456
+Current Balance: $200.55
+
+Transaction Requested: Balance Inquiry
+Error: Account number 111111 does not exist
+
+Transaction Requested: Deposit
+Account Number: 222222
+Old Balance: $5000.00
+Amount to Deposit: $1000.0
+New Balance: $6000.00
+
+Transaction Requested: Deposit
+Account Number: 987654
+Old Balance: $2.33
+Amount to Deposit: $1000.0
+New Balance: $1002.33
+
+Transaction Requested: Deposit
+Error: Account number 121212 does not exist
+
+Transaction Requested: Withdrawl
+Account Number: 567890
+Old Balance: $1234.56
+Amount to Withdraw: $234.56
+New Balance: $1000.00
+Withdrawl Sucessfull
+
+
+Transaction Requested: Withdrawl
+Account Number: 333333
+Error: $0.00 is an invalid amount
+
+Transaction Requested: Withdrawl
+Account Number: 333333
+Error: insufficient funds to withdraw $0.00
+
+Transaction Requested: Withdrawal
+Error: Account number 112211 does not exist
+
+Transaction Requested: Account Information
+Account Owner: Lilian Barnes
+Account Type: Savings
+Account Number: 567890
+Social Security Number: 54549981
+Account Balance: $1000.00
+
+Transaction Requested: Account Information
+Error: Account with SSN of 23549832 does not exist
+
+
+Account Request: New Account
+Account Request: New Account Information
+Owner: Nancy Williams
+Social Security Number: 23498634
+Account Type: Savings
+Account 232323 Created
+
+
+Account Request: New Account
+Account Request: New Account Information
+Owner: Joy Smith
+Social Security Number: 31296523
+Account Type: Checking
+Account 343434 Created
+
+
+Account Request: New Account
+Account Request: New Account Information
+Owner: Jeremy White
+Social Security Number: 90585782
+Account Type: CD
+Account 454545 Created
+
+Account Request: New Account
+Error: Account 123456 Already Exists
+
+Transaction Requested: Deposit
+Account Number: 232323
+Old Balance: $0.00
+Amount to Deposit: $230.0
+New Balance: $230.00
+
+Transaction Requested: Deposit
+Account Number: 343434
+Old Balance: $0.00
+Amount to Deposit: $340.0
+New Balance: $340.00
+
+Transaction Requested: Deposit
+Account Number: 454545
+Old Balance: $0.00
+Amount to Deposit: $450.0
+New Balance: $450.00
+
+Transaction Requested: Withdrawl
+Account Number: 232323
+Old Balance: $230.00
+Amount to Withdraw: $130.0
+New Balance: $100.00
+Withdrawl Sucessfull
+
+
+Transaction Requested: Withdrawl
+Account Number: 343434
+Old Balance: $340.00
+Amount to Withdraw: $240.0
+New Balance: $100.00
+Withdrawl Sucessfull
+
+
+Transaction Requested: Withdrawl
+Account Number: 454545
+Old Balance: $450.00
+Amount to Withdraw: $350.0
+New Balance: $100.00
+Withdrawl Sucessfull
+
+
+Account Request: Delete Account 938593
+Account Request: 938593 Has been Deleted
+
+Account Request: Delete Account 937439
+Error: Account 937439 still has a balance above $0.00
+
+Transaction Requested: Withdrawl
+Account Number: 937439
+Old Balance: $364.25
+Amount to Withdraw: $364.25
+New Balance: $0.00
+Withdrawl Sucessfull
+
+
+Account Request: Delete Account 937439
+Account Request: 937439 Has been Deleted
+
+Account Request: Delete Account 101010
+Error: Account 101010 Does Not Exist
+
+Error: A is an invalid selection -  try again
+
+Error: K is an invalid selection -  try again
