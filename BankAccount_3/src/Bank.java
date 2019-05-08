@@ -205,7 +205,7 @@ public class Bank {
                 outFile.println();
             }
         } else {
-            outFile.println("Transaction Requested: Withdrawal");
+            outFile.println("Transaction Requested: Deposit");
             outFile.println("Error: Account number: " + requestedAccount + " does not exist.");
         }
 
@@ -244,14 +244,39 @@ public class Bank {
 
         if (index != -1) {
             if (bank.getAccounts()[index].getAcctType().equals("CD")) {
-                bank.withCdAcct(bank, dateInfo, index,requestedAccount, outFile, kybd);
+                bank.withCdAcct(bank, dateInfo, index, requestedAccount, outFile, kybd);
             }
-            System.out.println();
+            System.out.println("Enter amount to Withdraw: ");   //Prompts for the account number
+            amountToWithdraw = kybd.nextDouble();               //Reads in the amount to withdraw
 
-
-
-
+            if (amountToWithdraw <= 0.0) { //invalid ammount to withdraw
+                outFile.println("Transaction Requested: Withdrawal");
+                outFile.println("Account Number: " + requestedAccount);
+                outFile.printf("Error: $%.2f is an invalid amount", amountToWithdraw);
+                outFile.println();
+            } else if (amountToWithdraw > bank.getAccounts()[index].getAcctBal()) { //invalid amount to withdraw
+                outFile.println("Transaction Requested: Withdrawal");
+                outFile.println("Account Number: " + requestedAccount);
+                outFile.printf("Error, Withdrawal Amount: $%.2f", amountToWithdraw);
+                outFile.print(" is higher than you balance of " + bank.getAccounts()[index].getAcctBal());
+                outFile.println();
+            } else {    //valid amount to withdraw
+                currentBal = bank.getAccounts()[index].getAcctBal();
+                outFile.println("Transaction Requested: Withdrawal");
+                outFile.println("Account Number: " + requestedAccount);
+                outFile.printf("Old Balance: $%.2f", bank.getAccounts()[index].getAcctBal());
+                outFile.println();
+                outFile.println("Amount to Withdraw: $" + amountToWithdraw);
+                bank.getAccounts()[index].setAcctBal(currentBal - amountToWithdraw);
+                outFile.printf("New Balance: $%.2f", bank.getAccounts()[index].getAcctBal());
+                outFile.println();
+            }
+        } else {
+            //Error message
+            outFile.println("Transaction Requested: Withdrawal");
+            outFile.println("Error: Account Number: " + requestedAccount + " does not exist");
         }
+
         outFile.println();
         outFile.flush();        //flush the output buffer
     }
@@ -352,40 +377,41 @@ public class Bank {
                 //sets the c1 calendar date 6 month before today's date.
                 dateInfo.c1.add(Calendar.MONTH, -6);
 
-                System.out.println("the date on the check  is: " + dateInfo.checkDate.getTime());
+                System.out.println("The date on the check  is: " + dateInfo.checkDate.getTime());
 
-                if (dateInfo.checkDate.after(dateInfo.c1) && dateInfo.checkDate.before(dateInfo.calendar)) {  //valid account
+                if (dateInfo.checkDate.after(dateInfo.c1) &&
+                        dateInfo.checkDate.before(dateInfo.calendar)) {  //valid account
 
                     System.out.print("Enter amount to withdrawal amount on the check: "); //prompts4amt2 withdraw
                     amountToWithdraw = kybd.nextDouble();               //reads in the amount to withdraw
 
                     if (amountToWithdraw <= 0.00) {     //invalid amount to withdraw
                         currentBal = bank.getAccounts()[index].getAcctBal();
-                        outFile.println("Transaction Requested: Withdrawal");
+                        outFile.println("Transaction Requested: Clear Check");
                         outFile.println("Account Number: " + requestedAccount);
                         outFile.printf("Error: $%.2f is an invalid amount", amountToWithdraw);
-                        outFile.println("A bouncing fee of $2.50 will be charged from your account.");
+                        outFile.println("\nA bouncing fee of $2.50 will be charged from your account.");
                         bank.getAccounts()[index].setAcctBal(currentBal - 2.50);
                         outFile.println();
                         clearCK = false;
                     } else if (amountToWithdraw > bank.getAccounts()[index].getAcctBal()) { //invalid amt to withdraw
                         currentBal = bank.getAccounts()[index].getAcctBal();
-                        outFile.println("Transaction Requested: Withdrawal");
+                        outFile.println("Transaction Requested: Clear Check");
                         outFile.println("Account Number: " + requestedAccount);
                         outFile.printf("Error, Withdrawal Amount: $%.2f", amountToWithdraw);
                         outFile.print(" is higher than your balance of " + bank.getAccounts()[index].getAcctBal());
-                        outFile.println("A bouncing fee of $2.50 will be charged from your account.");
+                        outFile.println("\nA bouncing fee of $2.50 will be charged from your account.");
                         bank.getAccounts()[index].setAcctBal(currentBal - 2.50);
                         outFile.println();
                         clearCK = false;
                     } else {    //valid amount to withdraw
                         currentBal = bank.getAccounts()[index].getAcctBal();
-                        outFile.println("Transaction Requested: Withdrawal");
+                        outFile.println("Transaction Requested: Clear Check");
                         outFile.println("Account Number: " + requestedAccount);
                         outFile.printf("Old Balance: $%.2f", bank.getAccounts()[index].getAcctBal());
                         outFile.println();
                         outFile.println("Amount to Withdraw: $" + amountToWithdraw);
-                        bank.getAccounts()[index].setAcctBal(currentBal - amountToWithdraw);      //makes the withdrawal
+                        bank.getAccounts()[index].setAcctBal(currentBal - amountToWithdraw);     //makes the withdrawal
                         outFile.printf("New Balance: $%.2f", bank.getAccounts()[index].getAcctBal());
                         outFile.println();
                         clearCK = true;
@@ -394,12 +420,12 @@ public class Bank {
                     outFile.println("The Check is older than six months and can not be deposited.");
                 }
             } else {
-                outFile.println("Transaction Requested: Withdrawal");
+                outFile.println("Transaction Requested: Clear Check");
                 outFile.println("Error: Account Number: " + requestedAccount + " is not a Checking Account");
             }
 
         } else {
-            outFile.println("Transaction Requested: Withdrawal");
+            outFile.println("Transaction Requested: Clear Check");
             outFile.println("The entered Account Number: " + requestedAccount + " does not exist");
         }
 
@@ -433,6 +459,7 @@ public class Bank {
         double amountToDeposit;
         double currentBal;
 
+        outFile.println();
         if (bank.getAccounts()[index].getMatDate() == 0) { //no maturity date
             System.out.println("Choose a Maturity Date. \nIt can be either 6, 12, 18, or 24 months.");
             bank.maturityDate = kybd.nextInt();
@@ -488,6 +515,7 @@ public class Bank {
         double amountToWithdraw;
         double currentBal;
 
+        outFile.println();
         if (bank.getAccounts()[index].getMatDate() == 0) { //no maturity date
             System.out.println("Choose a Maturity Date. \nIt can be either 6, 12, 18, or 24 months.");
             bank.maturityDate = kybd.nextInt();
@@ -502,6 +530,7 @@ public class Bank {
                 outFile.println("Transaction Requested: Deposit");
                 outFile.println("Account Number: " + requestedAccount);
                 outFile.println("Error: Invalid Maturity Date");
+                outFile.println();
                 return bank.getAccounts()[index].getMatDate();
             }
         }
@@ -511,6 +540,7 @@ public class Bank {
                 outFile.println("Transaction Requested: Deposit");
                 outFile.println("Account Number: " + requestedAccount);
                 outFile.println("Error: Your Maturity Date is still in Affect");
+                outFile.println();
             } else if (dateInfo.maturityCal.getTime().before(dateInfo.calendar.getTime())) { //after maturity date
                 System.out.print("Enter amount to withdraw: ");     //prompts for amount to withdraw
                 amountToWithdraw = kybd.nextDouble();               //reads in the amount to withdraw
@@ -538,6 +568,7 @@ public class Bank {
                     outFile.println();
                 }
             }
+            outFile.println();
         }
 
         outFile.println();
