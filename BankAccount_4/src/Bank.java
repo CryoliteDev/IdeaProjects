@@ -42,7 +42,8 @@ public class Bank {
             int acctNum = Integer.parseInt(sc.next());
             Double acctBal = Double.parseDouble(sc.next());
             int matDate = Integer.parseInt(sc.next());
-            bank.getAccounts()[totalAccountsReadIn] = new Account(fName, lName, SSN, acctNum, acctType, acctBal, matDate);
+            bank.getAccounts()[totalAccountsReadIn] = new Account(fName, lName, SSN, acctNum,
+                    acctType, acctBal, matDate);
             totalAccountsReadIn++;
         }
 
@@ -101,9 +102,10 @@ public class Bank {
      *  Otherwise, returns -1
      */
     public int findAcct(Bank bank, int totalAccountsReadIn, int requestedAccount) {
-        for (int index = 0; index < totalAccountsReadIn; index++)
+        for (int index = 0; index < totalAccountsReadIn; index++) {
             if (bank.getAccounts()[index].getAcctNum() == requestedAccount)
                 return index;
+        }
         return -1;
     }
 
@@ -166,7 +168,7 @@ public class Bank {
     public static void deposit(Bank bank, DateInfo dateInfo, int totalAccountsReadIn,
                                PrintWriter outFile, Scanner kybd) {
 
-        int index;
+        int index = -1;
         int requestedAccount;
         double amountToDeposit;
         double currentBal;
@@ -178,13 +180,10 @@ public class Bank {
         //call findAcct to search if requestedAccount exists
         index = bank.findAcct(bank, totalAccountsReadIn, requestedAccount);
 
-        if (index == 0) {  //invalid account
-            outFile.println("Transaction Requested: Deposit");
-            outFile.println("Error: Account number " + requestedAccount + " does not exist");
-        } else if (bank.getAccounts()[index].getAcctType().equals("CD") || bank.getAccounts()[index].getAcctType().equals("cd")) { //valid account
-
-            bank.depCdAcct(bank, dateInfo, index, requestedAccount, outFile, kybd);
-        } else {
+        if (index != -1) {
+            if (bank.getAccounts()[index].getAcctType().equals("CD")) {
+                bank.depCdAcct(bank,dateInfo,index,requestedAccount, outFile, kybd);
+            }
             System.out.print("Enter amount to deposit: ");    //prompt for amount to deposit
             amountToDeposit = kybd.nextDouble();            //read-in the amount to deposit
 
@@ -205,6 +204,9 @@ public class Bank {
                 outFile.printf("New Balance: $%.2f", bank.getAccounts()[index].getAcctBal());
                 outFile.println();
             }
+        } else {
+            outFile.println("Transaction Requested: Deposit");
+            outFile.println("Error: Account number: " + requestedAccount + " does not exist.");
         }
 
         outFile.println();
@@ -236,28 +238,27 @@ public class Bank {
         System.out.println("Enter the account number: ");       //prompts for account number
         requestedAccount = kybd.nextInt();                      //reads in the account number
 
-        //call findAcct to search if requestedAccount exists.
+        //call findAcct to
+        // search if requestedAccount exists.
         index = bank.findAcct(bank, totalAccountsReadIn, requestedAccount);
 
-        if (index == -1) {     //invalid account
-            outFile.println("Transaction Requested: Withdrawal");
-            outFile.println("Error: Account number: " + requestedAccount + " does not exist.");
-        } else if (bank.getAccounts()[index].getAcctType().equals("CD") || bank.getAccounts()[index].getAcctType().equals("cd")) {
-            withCdAcct(bank, dateInfo, index, requestedAccount, outFile, kybd);
-        } else {    //valid account
-            System.out.print("Enter amount to withdraw: ");     //prompts for amount to withdraw
-            amountToWithdraw = kybd.nextDouble();               //reads in the amount to withdraw
+        if (index != -1) {
+            if (bank.getAccounts()[index].getAcctType().equals("CD")) {
+                bank.withCdAcct(bank, dateInfo, index, requestedAccount, outFile, kybd);
+            }
+            System.out.println("Enter amount to Withdraw: ");   //Prompts for the account number
+            amountToWithdraw = kybd.nextDouble();               //Reads in the amount to withdraw
 
-            if (amountToWithdraw <= 0.00) {     //invalid amount to withdraw
+            if (amountToWithdraw <= 0.0) { //invalid ammount to withdraw
                 outFile.println("Transaction Requested: Withdrawal");
                 outFile.println("Account Number: " + requestedAccount);
                 outFile.printf("Error: $%.2f is an invalid amount", amountToWithdraw);
                 outFile.println();
-            } else if (amountToWithdraw > bank.getAccounts()[index].getAcctBal()) {    //invalid amount to withdraw
+            } else if (amountToWithdraw > bank.getAccounts()[index].getAcctBal()) { //invalid amount to withdraw
                 outFile.println("Transaction Requested: Withdrawal");
                 outFile.println("Account Number: " + requestedAccount);
                 outFile.printf("Error, Withdrawal Amount: $%.2f", amountToWithdraw);
-                outFile.print(" is higher than your balance of " + bank.getAccounts()[index].getAcctBal());
+                outFile.print(" is higher than you balance of " + bank.getAccounts()[index].getAcctBal());
                 outFile.println();
             } else {    //valid amount to withdraw
                 currentBal = bank.getAccounts()[index].getAcctBal();
@@ -266,11 +267,16 @@ public class Bank {
                 outFile.printf("Old Balance: $%.2f", bank.getAccounts()[index].getAcctBal());
                 outFile.println();
                 outFile.println("Amount to Withdraw: $" + amountToWithdraw);
-                bank.getAccounts()[index].setAcctBal(currentBal - amountToWithdraw);      //makes the withdrawal
+                bank.getAccounts()[index].setAcctBal(currentBal - amountToWithdraw);
                 outFile.printf("New Balance: $%.2f", bank.getAccounts()[index].getAcctBal());
                 outFile.println();
             }
+        } else {
+            //Error message
+            outFile.println("Transaction Requested: Withdrawal");
+            outFile.println("Error: Account Number: " + requestedAccount + " does not exist");
         }
+
         outFile.println();
         outFile.flush();        //flush the output buffer
     }
@@ -341,12 +347,10 @@ public class Bank {
         //variable declarations
         int yearCK, monthCK, dayOfMonthCK;
         int requestedAccount;
-        int index;
+        int index = -1;
         double amountToWithdraw;
         double currentBal;
         boolean clearCK = false;
-        String Chk = "Checking";
-        String Chk1 = "checking";
 
         outFile.println();
         System.out.println("Enter the account number: ");       //prompts for account number
@@ -355,13 +359,8 @@ public class Bank {
         //call findAcct to search if requestedAccount exists.
         index = bank.findAcct(bank, totalAccountsReadIn, requestedAccount);
 
-        if (bank.getAccounts()[index].getAcctType().equals(Chk) ||
-                bank.getAccounts()[index].getAcctType().equals(Chk1)) {
-            if (index == 0) {  //invalid account
-                outFile.println("Transaction Requested: Withdrawal");
-                outFile.println("Error: Account number: " + requestedAccount + " does not exist.");
-            } else if (index == 1) { //invalid account
-
+        if (index != -1) {   //valid account
+            if (bank.getAccounts()[index].getAcctType().equals("CHECKING")) {
                 //They user enters the date on the check
                 System.out.println("Enter the Date on the Check: \n In the Format of MM DD YYYY");
                 monthCK = kybd.nextInt();
@@ -378,57 +377,63 @@ public class Bank {
                 //sets the c1 calendar date 6 month before today's date.
                 dateInfo.c1.add(Calendar.MONTH, -6);
 
-                System.out.println("the date on the check  is: " + dateInfo.checkDate.getTime());
+                System.out.println("The date on the check  is: " + dateInfo.checkDate.getTime());
 
-                if (dateInfo.checkDate.after(dateInfo.c1) && dateInfo.checkDate.before(dateInfo.calendar)) {
-                    if (index == 1)     //valid account
-                        System.out.print("Enter amount to withdrawal amount on the check: "); //prompts4amt2 withdraw
+                if (dateInfo.checkDate.after(dateInfo.c1) &&
+                        dateInfo.checkDate.before(dateInfo.calendar)) {  //valid account
+
+                    System.out.print("Enter amount to withdrawal amount on the check: "); //prompts4amt2 withdraw
                     amountToWithdraw = kybd.nextDouble();               //reads in the amount to withdraw
 
                     if (amountToWithdraw <= 0.00) {     //invalid amount to withdraw
                         currentBal = bank.getAccounts()[index].getAcctBal();
-                        outFile.println("Transaction Requested: Withdrawal");
+                        outFile.println("Transaction Requested: Clear Check");
                         outFile.println("Account Number: " + requestedAccount);
                         outFile.printf("Error: $%.2f is an invalid amount", amountToWithdraw);
-                        outFile.println("A bouncing fee of $2.50 will be charged from your account.");
+                        outFile.println("\nA bouncing fee of $2.50 will be charged from your account.");
                         bank.getAccounts()[index].setAcctBal(currentBal - 2.50);
                         outFile.println();
                         clearCK = false;
                     } else if (amountToWithdraw > bank.getAccounts()[index].getAcctBal()) { //invalid amt to withdraw
                         currentBal = bank.getAccounts()[index].getAcctBal();
-                        outFile.println("Transaction Requested: Withdrawal");
+                        outFile.println("Transaction Requested: Clear Check");
                         outFile.println("Account Number: " + requestedAccount);
                         outFile.printf("Error, Withdrawal Amount: $%.2f", amountToWithdraw);
                         outFile.print(" is higher than your balance of " + bank.getAccounts()[index].getAcctBal());
-                        outFile.println("A bouncing fee of $2.50 will be charged from your account.");
+                        outFile.println("\nA bouncing fee of $2.50 will be charged from your account.");
                         bank.getAccounts()[index].setAcctBal(currentBal - 2.50);
                         outFile.println();
                         clearCK = false;
                     } else {    //valid amount to withdraw
                         currentBal = bank.getAccounts()[index].getAcctBal();
-                        outFile.println("Transaction Requested: Withdrawal");
+                        outFile.println("Transaction Requested: Clear Check");
                         outFile.println("Account Number: " + requestedAccount);
                         outFile.printf("Old Balance: $%.2f", bank.getAccounts()[index].getAcctBal());
                         outFile.println();
                         outFile.println("Amount to Withdraw: $" + amountToWithdraw);
-                        bank.getAccounts()[index].setAcctBal(currentBal - amountToWithdraw);      //makes the withdrawal
+                        bank.getAccounts()[index].setAcctBal(currentBal - amountToWithdraw);     //makes the withdrawal
                         outFile.printf("New Balance: $%.2f", bank.getAccounts()[index].getAcctBal());
                         outFile.println();
                         clearCK = true;
                     }
+                } else if (dateInfo.checkDate.before(dateInfo.c1)) {
+                    outFile.println("The Check is older than six months and can not be deposited.");
                 }
-            } else if (dateInfo.checkDate.before(dateInfo.c1)) {
-                System.out.println("The Check is older than six months and can not be deposited.");
-                outFile.println("The Check is older than six months and can not be deposited.");
+            } else {
+                outFile.println("Transaction Requested: Clear Check");
+                outFile.println("Error: Account Number: " + requestedAccount + " is not a Checking Account");
             }
+
         } else {
-            outFile.println("The entered account is not a Checking\'s Account");
+            outFile.println("Transaction Requested: Clear Check");
+            outFile.println("The entered Account Number: " + requestedAccount + " does not exist");
         }
 
         outFile.println();
         outFile.flush();        //flush the output buffer
         return clearCK;
     }
+
 
 
     /*Method depCdAcct
@@ -454,6 +459,7 @@ public class Bank {
         double amountToDeposit;
         double currentBal;
 
+        outFile.println();
         if (bank.getAccounts()[index].getMatDate() == 0) { //no maturity date
             System.out.println("Choose a Maturity Date. \nIt can be either 6, 12, 18, or 24 months.");
             bank.maturityDate = kybd.nextInt();
@@ -509,6 +515,7 @@ public class Bank {
         double amountToWithdraw;
         double currentBal;
 
+        outFile.println();
         if (bank.getAccounts()[index].getMatDate() == 0) { //no maturity date
             System.out.println("Choose a Maturity Date. \nIt can be either 6, 12, 18, or 24 months.");
             bank.maturityDate = kybd.nextInt();
@@ -523,6 +530,7 @@ public class Bank {
                 outFile.println("Transaction Requested: Deposit");
                 outFile.println("Account Number: " + requestedAccount);
                 outFile.println("Error: Invalid Maturity Date");
+                outFile.println();
                 return bank.getAccounts()[index].getMatDate();
             }
         }
@@ -532,6 +540,7 @@ public class Bank {
                 outFile.println("Transaction Requested: Deposit");
                 outFile.println("Account Number: " + requestedAccount);
                 outFile.println("Error: Your Maturity Date is still in Affect");
+                outFile.println();
             } else if (dateInfo.maturityCal.getTime().before(dateInfo.calendar.getTime())) { //after maturity date
                 System.out.print("Enter amount to withdraw: ");     //prompts for amount to withdraw
                 amountToWithdraw = kybd.nextDouble();               //reads in the amount to withdraw
@@ -559,6 +568,7 @@ public class Bank {
                     outFile.println();
                 }
             }
+            outFile.println();
         }
 
         outFile.println();
@@ -594,86 +604,90 @@ public class Bank {
             System.out.println("Enter new Account Number: ");
             requestedAccount = kybd.nextInt();
 
-            //calls findAcct() to search if requestedAccounts exits
+            //calls findAcct() to search if requestedAccount exists
             index = bank.findAcct(bank, totalAccountsReadIn, requestedAccount);
 
             if (index == -1 && (requestedAccount <= 999999) && (requestedAccount >= 100000)) {
                 acctCreated = true;
-            } else if (requestedAccount < 999999 || requestedAccount < 100000) {
-                outFile.println("Transaction Requested: New Account");
-                outFile.println("Error: Account Number: " + requestedAccount + " is an Invalid Account Number");
-                acctCreated = false;
             } else {
                 outFile.println("Transaction Requested: New Account");
-                outFile.println("Error: Account Number: " + requestedAccount + " Already exists.");
+                outFile.println("Error: Account Number: " + requestedAccount + " is invalid");
                 acctCreated = false;
             }
 
             if (acctCreated) {
+                //Prompts for the first then the last name
                 System.out.println("Enter First Name: ");
                 fNameRequested = kybd.next();
-            }
 
-            if (acctCreated) {
                 System.out.println("Enter Last Name: ");
                 lNameRequested = kybd.next();
-            }
 
-            if (acctCreated) {
+                //Prompts for the acctType
+                System.out.println("Enter Account Type to Open: ");
+                acctTypeRequested = kybd.next();
+
+                if (!(acctTypeRequested.equals("Checking") ||
+                        acctTypeRequested.equals("Savings") ||
+                        acctTypeRequested.equals("checking") ||
+                        acctTypeRequested.equals("savings") ||
+                        acctTypeRequested.equals("cd") ||
+                        acctTypeRequested.equals("CD"))) {
+
+                    System.out.println("Error: The Account Type entered in invalid");
+                    acctCreated = false;
+                }
+
+                if (acctTypeRequested.equals("cd") || acctTypeRequested.equals("CD"))
+                    matDate = 0;
+
+
+
+                //Prompts for the SSN
                 System.out.println("Enter Social Security Number: ");
                 SSNRequested = kybd.next();
-
                 for (int i = 0; i < totalAccountsReadIn; i++) {
-                    //Checks if the SSN exists or not
+                    //check if the ssn exists already
                     if (bank.getAccounts()[i].getDepositor().getSSN().equals(SSNRequested)) {
                         outFile.println("Transaction Requested: New Account");
-                        outFile.println("Error: Socail Security Number " + SSNRequested + " already exists");
+                        outFile.println("Error: Social Securtiy Number " + SSNRequested + " already exists");
                         acctCreated = false;
                     }
                 }
             }
 
             if (acctCreated) {
-                System.out.println();
-                System.out.println("Enter Account Type to Open: ");     //Prompts for account Type
-                acctTypeRequested = kybd.next();
-
-                if (acctTypeRequested.equals("Checking") ||
-                        acctTypeRequested.equals("Savings") ||
-                        acctTypeRequested.equals("CD") ||
-                        acctTypeRequested.equals("checking") ||
-                        acctTypeRequested.equals("savings") ||
-                        acctTypeRequested.equals("cd")) {
-                    acctCreated = true;
-                }
-                if (acctTypeRequested.equals("cd") || acctTypeRequested.equals("CD"))
-                    matDate = 0;
-
-            }
-
-            if (acctCreated) {
                 outFile.println();
-                outFile.println("Transaction Requested: New Account");
+                outFile.println("Transaction requested: New Account");
 
-                //Sets the new account to the next available spot with a balanceof $0.
-                bank.setAccts(bank, totalAccountsReadIn, fNameRequested, lNameRequested, SSNRequested, requestedAccount, acctTypeRequested, 0.0, matDate);
-                //Displays new Account Information.
+                //Sets the new account to the next avalible spot w/ bal of $0
+                bank.setAccts(bank, totalAccountsReadIn, fNameRequested, lNameRequested, SSNRequested,
+                        requestedAccount, acctTypeRequested, 0.0, matDate);
+
+                //Displays new acct info
                 outFile.println("Accounts Request: New Account Information");
-                outFile.println("Owner: " + bank.getAccounts()[totalAccountsReadIn].getName().getfName() + " " +
+                outFile.println("Owner " + bank.getAccounts()[totalAccountsReadIn].getName().getfName() + " " +
                         bank.getAccounts()[totalAccountsReadIn].getName().getlName());
                 outFile.println("Social Security Number: " + bank.getAccounts()[totalAccountsReadIn].getDepositor().getSSN());
                 outFile.println("Account Type: " + bank.getAccounts()[totalAccountsReadIn].getAcctType());
-                outFile.println("Account Number: " + requestedAccount + " Created");
-                success = true;
+                outFile.println("Account Number: " + requestedAccount + " Successfully Created");
+
                 outFile.println();
                 outFile.flush();
-                return success;
+                return success = true;
+            }
+
+            if (!acctCreated) {
+                outFile.println("Transaction Requested: New Account");
+                outFile.println("Error: Account not created");
+                return success = false;
             }
         }
 
         outFile.println();
         outFile.flush();
-        return success;
+
+        return success = false;
     }
 
 

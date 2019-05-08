@@ -1,7 +1,6 @@
 public class Depositor {
 
     //Variable Declarations
-
     private Name name;
     private String SSN;
 
@@ -11,6 +10,7 @@ public class Depositor {
         this.SSN = SSN;
     }
 
+    //Getters and Setters
     public Name getName() {
         return name;
     }

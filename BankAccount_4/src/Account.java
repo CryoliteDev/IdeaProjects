@@ -47,7 +47,7 @@ public class Account {
     }
 
     public String getAcctType() {
-        return acctType;
+        return acctType.toUpperCase();
     }
 
     public void setAcctType(String acctType) {

@@ -1,25 +1,23 @@
 import java.util.Calendar;
 public class DateInfo {
 
-
     //variable declarations
     private int year, month, dayOfMonth;
 
-    //Calender Object
+    //Calender Objects
     Calendar calendar = Calendar.getInstance();
     Calendar c1 = Calendar.getInstance();
     Calendar checkDate = Calendar.getInstance();
     Calendar maturityCal = Calendar.getInstance();
 
-
-
-
+    //Constructor
     public DateInfo(int year, int month, int dayOfMonth) {
         setYear(year);
         setMonth(month);
         setDayOfMonth(dayOfMonth);
     }
 
+    //Getters and Setters
     public DateInfo(Calendar calendar) {
         this.calendar = calendar;
     }
@@ -47,5 +45,4 @@ public class DateInfo {
     public void setDayOfMonth(int dayOfMonth) {
         this.dayOfMonth = dayOfMonth;
     }
-
 }

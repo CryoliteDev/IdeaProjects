@@ -11,7 +11,6 @@ public class Name {
     }
 
     //Getters and Setters
-
     public String getfName() {
         return fName;
     }
