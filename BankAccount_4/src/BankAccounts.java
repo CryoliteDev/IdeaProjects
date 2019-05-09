@@ -7,11 +7,8 @@ public class BankAccounts {
 
         //MUHAMMAD-AZHAR CISC 3115-MW9
         //constant definitions
-
         Bank bank = new Bank();
         DateInfo dateInfo = new DateInfo(Calendar.getInstance());
-
-        final int MAX_NUM = 50;
 
         //variable declarations
         char choice;									//menu item selected
@@ -22,19 +19,19 @@ public class BankAccounts {
         File testFile = new File("testCases.txt");
 
         //create Scanner object
-        Scanner kybd = new Scanner(testFile);
-        //Scanner kybd = new Scanner(System.in);
+        //Scanner kybd = new Scanner(testFile);
+        Scanner kybd = new Scanner(System.in);
 
         // open the output file
         //PrintWriter outFile = new PrintWriter("/Users/Xiao/IdeaProjects/BankAccount_1/output.txt");
-        PrintWriter outFile = new PrintWriter("output.txt");
-        //PrintWriter outFile = new PrintWriter(System.out);
+        //PrintWriter outFile = new PrintWriter("output.txt");
+        PrintWriter outFile = new PrintWriter(System.out);
 
         outFile.println("MUHAMMAD-AZHAR \nCISC 5115-MW9\n");
         /* first part */
         /* fill and print initial database */
-        int totalAccounts = bank.readAccts(bank);
-        bank.printAccts(bank,totalAccounts,outFile);
+        bank.readAccts();
+        bank.printAccts(bank,outFile);
 
         /* second part */
         /* prompts for a transaction and then */
@@ -46,42 +43,42 @@ public class BankAccounts {
                 case 'q':
                 case 'Q':
                     not_done = false;
-                    bank.printAccts(bank, totalAccounts, outFile);
+                    bank.printAccts(bank, outFile);
                     break;
                 case 'b':
                 case 'B':
-                    bank.balance(bank, totalAccounts ,outFile,kybd);
+                    bank.balance(bank, outFile,kybd);
                     break;
                 case 'd':
                 case 'D':
-                    bank.deposit(bank, dateInfo, totalAccounts,outFile,kybd);
+                    bank.deposit(bank, dateInfo,outFile,kybd);
                     break;
                 case 'w':
                 case 'W':
-                    bank.withdrawal(bank, dateInfo, totalAccounts,outFile,kybd);
+                    bank.withdrawal(bank, dateInfo, outFile,kybd);
                     break;
                 case 'c':
                 case 'C':
-                    bank.clearCheck(bank,dateInfo, totalAccounts,outFile,kybd);
+                    bank.clearCheck(bank,dateInfo,outFile,kybd);
                     break;
                 case 'i':
                 case 'I':
-                    bank.accountInfo(bank, totalAccounts, outFile, kybd);
-                    break;
+                    bank.accountInfo(bank, outFile, kybd);
+                    break;/*
                 case 'n':
                 case 'N':
-                    bank.newAcct(bank, totalAccounts, outFile, kybd);
+                    bank.newAcct(bank, outFile, kybd);
                     if (bank.success == true){
-                        totalAccounts+=1;
+                        bank.getAccounts().get()+=1;
                     }
                     break;
                 case 'x':
                 case 'X':
-                    bank.deleteAcct(bank, totalAccounts, outFile, kybd);
+                    bank.deleteAcct(bank, outFile, kybd);
                     if(bank.success == true){
                         totalAccounts--;
                     }
-                    break;
+                    break;*/
                 default:
                     outFile.println("Error: \"" + choice + "\" is an invalid selection -  try again");
                     outFile.println();
