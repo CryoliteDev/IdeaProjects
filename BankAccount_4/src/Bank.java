@@ -391,33 +391,33 @@ public class Bank {
                     amountToWithdraw = kybd.nextDouble();
 
                     if (amountToWithdraw <= 0.00) {     //INVALID AMOUNT TO WITHDRAW
-                        currentBal = bank.getAccounts().get(index).getAcctBal();
+                        currentBal = account.getAcctBal();
                         outFile.println("Transaction Requested: Clear Check");
                         outFile.println("Account Number: " + requestedAccount);
                         outFile.printf("Error: $%.2f is an invalid amount", amountToWithdraw);
                         outFile.println("\nA bouncing fee of $2.50 will be charged from your account.");
-                        bank.getAccounts().get(index).setAcctBal(currentBal - 2.50);
+                        account.setAcctBal(currentBal - 2.50);
                         outFile.println();
                         clearCK = false;
-                    } else if (amountToWithdraw > bank.getAccounts().get(index).getAcctBal()) { //INVALID AMOUNT
-                        currentBal = bank.getAccounts().get(index).getAcctBal();
+                    } else if (amountToWithdraw > account.getAcctBal()) { //INVALID AMOUNT
+                        currentBal = account.getAcctBal();
                         outFile.println("Transaction Requested: Clear Check");
                         outFile.println("Account Number: " + requestedAccount);
                         outFile.printf("Error, Withdrawal Amount: $%.2f", amountToWithdraw);
-                        outFile.print(" is higher than your balance of " + bank.getAccounts().get(index).getAcctBal());
+                        outFile.print(" is higher than your balance of " + account.getAcctBal());
                         outFile.println("\nA bouncing fee of $2.50 will be charged from your account.");
-                        bank.getAccounts().get(index).setAcctBal(currentBal - 2.50);
+                        account.setAcctBal(currentBal - 2.50);
                         outFile.println();
                         clearCK = false;
                     } else {    //VALID AMOUNT TO WITHDRAW
-                        currentBal = bank.getAccounts().get(index).getAcctBal();
+                        currentBal = account.getAcctBal();
                         outFile.println("Transaction Requested: Clear Check");
                         outFile.println("Account Number: " + requestedAccount);
-                        outFile.printf("Old Balance: $%.2f", bank.getAccounts().get(index).getAcctBal());
+                        outFile.printf("Old Balance: $%.2f", account.getAcctBal());
                         outFile.println();
                         outFile.println("Amount to Withdraw: $" + amountToWithdraw);
-                        bank.getAccounts().get(index).setAcctBal(currentBal - amountToWithdraw); //MAKES THE WITHDRAWAL
-                        outFile.printf("New Balance: $%.2f", bank.getAccounts().get(index).getAcctBal());
+                        account.setAcctBal(currentBal - amountToWithdraw); //MAKES THE WITHDRAWAL
+                        outFile.printf("New Balance: $%.2f", account.getAcctBal());
                         outFile.println();
                         clearCK = true;
                     }
@@ -458,64 +458,36 @@ public class Bank {
      *  Otherwise, an error message is printed
      *  returns the matDate
      */
-    public int depCdAcct(DateInfo dateInfo, int index, int requestedAccount,
+    public void depositToCDAccount(DateInfo dateInfo, int index, int requestedAccount,
                                 PrintWriter outFile, Scanner kybd) {
 
         double amountToDeposit;
         double currentBal;
+        int maturityDate;
 
+        outFile.println();
+        Account account = this.findAcct(requestedAccount);
+        String requestType = "Deposit CD Account";
 
         //HAS NO MATURITY DATE
-        if (account.getMatDate() == 0) {
-            //PROMPTS FOR AND THEN READS-IN MATURITY DATE
-            System.out.println("Choose a Maturity Date. \nIt can be either 6, 12, 18, or 24 months.");
-            account.maturityDate = kybd.nextInt();
-            if (account.maturityDate == 6 || account.maturityDate == 12 ||
-                    account.maturityDate == 18 || account.maturityDate == 24) {
-                dateInfo.maturityCal.add(Calendar.MONTH, account.maturityDate);
-                outFile.println("Your maturity date has been set to : " + dateInfo.maturityCal.getTime());
-                account.setMatDate(1);
-                return account.getAccounts().get(index).getMatDate();
-            } else {    //INVALID MATURITY DATE
-                outFile.println("Transaction Requested: Deposit");
-                outFile.println("Account Number: " + requestedAccount);
-                outFile.println("Error: Invalid Maturity Date");
-                return account.getAccounts().get(index).getMatDate();
-            }
+        if (account.getMatDate() == false) {
+            setMatDate(account, dateInfo,requestType,outFile,kybd);
         }
         //HAS A MATURITY DATE
-        if (account.getAccounts().get(index).getMatDate() == 1) {
-            if (dateInfo.maturityCal.getTime().after(dateInfo.calendar.getTime())) { //MATURITY IN AFFECT
-                outFile.println("Transaction Requested: Deposit");
-                outFile.println("Account Number: " + requestedAccount);
-                outFile.println("Error: Your Maturity Date is still in Affect");
-            } else if (dateInfo.maturityCal.getTime().before(dateInfo.calendar.getTime())) { //AFTER MATURITY DATE
-                //PROMPTS FOR AND THEN READ-IN AMOUNT TO DEPOSIT
-                System.out.print("Enter amount to deposit: ");
-                amountToDeposit = kybd.nextDouble();
-                if (amountToDeposit <= 0.00) {  //INVALID AMOUNT
-                    outFile.println("Transaction Requested: Deposit");
-                    outFile.println("Account Number: " + requestedAccount);
-                    outFile.println("Amount to Deposit: $" + amountToDeposit);
-                    outFile.printf("Error: $%.2f is an invalid amount", amountToDeposit);
-                    outFile.println();
-                } else {    //VALID TRANSACTION
-                    currentBal = account.getAccounts().get(index).getAcctBal();
-                    outFile.println("Transaction Requested: Deposit");
-                    outFile.println("Account Number: " + requestedAccount);
-                    outFile.printf("Old Balance: $%.2f", account.getAccounts().get(index).getAcctBal());
-                    outFile.println();
-                    outFile.println("Amount to Deposit: $" + amountToDeposit);
-                    account.getAccounts().get(index).setAcctBal(currentBal + amountToDeposit); //MAKES THE DEPOSIT
-                    outFile.printf("New Balance: $%.2f", account.getAccounts().get(index).getAcctBal());
-                    outFile.println();
-                }
-            }
+        if (account.getMatDate() == true) {
+           if (dateInfo.maturityCal.getTime().before(dateInfo.calendar.getTime())) {
+
+           }
         }
 
         outFile.println();
         outFile.flush();    //FLUSH TO OUTPUT BUFFER
         return account.getAccounts().get(index).getMatDate();
+    }
+
+    private void makeDeposit(Account account, String requestType, int requestedAccout, PrintWriter outFile, Scanner kybd) {
+        displayValidAccount(outFile, requestType, requestedAccout);
+        outFile.println();
     }
 
     /*Method withCdAcct
@@ -794,6 +766,19 @@ public class Bank {
      */
     public void addAccount(Account account) {
         accounts.add(account);
+    }
+
+    private void setMatDate(Account account, DateInfo dateInfo, String requestType, PrintWriter outFile, Scanner kybd) {
+        System.out.println("Choose a Maturity Date.\nIt can be either 6, 12, 18, or 24 months.");
+        maturityDate = kybd.nextInt();
+        if (maturityDate <= 24 && maturityDate %6 == 0) {
+            dateInfo.maturityCal.add(Calendar.MONTH, maturityDate);
+            outFile.println("Your maturity dfate has been set to: " + dateInfo.maturityCal.getTime());
+            account.setMatDate(true);
+        } else {
+            displayValidAccount(outFile, requestType, accountNumber);
+            outFile.println("Error: Invalid Maturity Date");
+        }
     }
 
     public double requestDepositAmount(Scanner kybd) {
