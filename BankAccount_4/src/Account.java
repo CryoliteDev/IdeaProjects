@@ -6,12 +6,11 @@ public class Account {
     private int acctNum;
     private String acctType;
     private Double acctBal;
-    private int matDate;
-    private int maturityDate;
+    private boolean matDate;
 
 
     //Constructor
-    public Account(String fName, String lName, String SSN, int acctNum, String acctType, Double acctBal, int matDate) {
+    public Account(String fName, String lName, String SSN, int acctNum, String acctType, Double acctBal, boolean matDate) {
         depositor = new Depositor(fName, lName, SSN);
         name = new Name(fName, lName);
         this.acctNum = acctNum;
@@ -62,11 +61,11 @@ public class Account {
         this.acctBal = acctBal;
     }
 
-    public int getMatDate() {
+    public boolean getMatDate() {
         return matDate;
     }
 
-    public void setMatDate(int matDate) {
+    public void setMatDate(boolean matDate) {
         this.matDate = matDate;
     }
 }

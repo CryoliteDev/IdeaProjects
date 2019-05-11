@@ -6,7 +6,7 @@ public class Depositor {
 
     //Constructor
     public Depositor(String fName, String lName, String SSN) {
-        this.name = name;
+        name = new Name(fName, lName);
         this.SSN = SSN;
     }
 

@@ -47,38 +47,32 @@ public class BankAccounts {
                     break;
                 case 'b':
                 case 'B':
-                    bank.balance(bank, outFile,kybd);
+                    bank.balance(outFile,kybd);
                     break;
                 case 'd':
                 case 'D':
-                    bank.deposit(bank, dateInfo,outFile,kybd);
+                    bank.deposit(dateInfo,outFile,kybd);
                     break;
                 case 'w':
                 case 'W':
-                    bank.withdrawal(bank, dateInfo, outFile,kybd);
+                    bank.withdrawal(dateInfo, outFile,kybd);
                     break;
                 case 'c':
                 case 'C':
-                    bank.clearCheck(bank,dateInfo,outFile,kybd);
+                    bank.clearCheck(dateInfo,outFile,kybd);
                     break;
                 case 'i':
                 case 'I':
-                    bank.accountInfo(bank, outFile, kybd);
-                    break;/*
+                    bank.accountInfo(outFile, kybd);
+                    break;
                 case 'n':
                 case 'N':
-                    bank.newAcct(bank, outFile, kybd);
-                    if (bank.success == true){
-                        bank.getAccounts().get()+=1;
-                    }
+                    bank.newAcct(outFile, kybd);
                     break;
                 case 'x':
                 case 'X':
-                    bank.deleteAcct(bank, outFile, kybd);
-                    if(bank.success == true){
-                        totalAccounts--;
-                    }
-                    break;*/
+                    bank.deleteAcct(outFile, kybd);
+                    break;
                 default:
                     outFile.println("Error: \"" + choice + "\" is an invalid selection -  try again");
                     outFile.println();
