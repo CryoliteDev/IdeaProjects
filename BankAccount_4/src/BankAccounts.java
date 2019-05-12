@@ -69,6 +69,14 @@ public class BankAccounts {
                 case 'N':
                     bank.newAcct(outFile, kybd);
                     break;
+                case 'S':
+                case 's':
+                    bank.closeAccount(outFile,kybd);
+                    break;
+                case 'R':
+                case 'r':
+                    bank.reopenAccount(outFile,kybd);
+                    break;
                 case 'x':
                 case 'X':
                     bank.deleteAcct(outFile, kybd);
@@ -113,6 +121,9 @@ public class BankAccounts {
         System.out.println("\t     N -- New Account");
         System.out.println("\t     B -- Balance Inquiry");
         System.out.println("\t     I -- Account Info");
+        System.out.println("\t     H -- Account Info with Transaction History");
+        System.out.println("\t     S -- Close Account");
+        System.out.println("\t     R -- Reopen a closed Account");
         System.out.println("\t     X -- Delete Account");
         System.out.println("\t     Q -- Quit");
         System.out.println();
