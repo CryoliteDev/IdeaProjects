@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Account {
 
     //Variable declarations
@@ -7,8 +9,9 @@ public class Account {
     private String acctType;
     private Double acctBal;
     private boolean matDate;
-
     private boolean acctStat;
+    private ArrayList<Transaction> Transactions = new ArrayList<Transaction>();
+
 
     //Constructor
 
@@ -20,8 +23,16 @@ public class Account {
         this.acctBal = acctBal;
         this.matDate = matDate;
         setAcctStat(readAcctStat);
+        addTransaction("", acctBal, true,null);
     }
     //Getters and Setters
+    public void addTransaction(String transactionType, double transactionAmount, boolean successIndicator, String failureReason) {
+        Transactions.add(new Transaction(transactionType, transactionAmount,successIndicator,failureReason));
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return Transactions;
+    }
 
     public Depositor getDepositor() {
         return depositor;
