@@ -1,6 +1,5 @@
 public class Transaction {
     private String transactionType;
-
     private String failureReason;
     private boolean successIndicator;
     private double transactionAmount;
@@ -43,6 +42,14 @@ public class Transaction {
 
     public void setTransactionAmount(double transactionAmount) {
         this.transactionAmount = transactionAmount;
+    }
+
+    public String toString() {
+        return String.format("Transaction Requested: %s \n" +
+                "Transaction Amount %s \n" +
+                "Transaction Success:%s \n" +
+                "Reason for Failure: %s \n" ,
+                transactionType,transactionAmount,successIndicator,failureReason);
     }
 
 }

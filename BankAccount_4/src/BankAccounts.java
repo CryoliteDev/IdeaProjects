@@ -9,23 +9,25 @@ public class BankAccounts {
         //constant definitions
         Bank bank = new Bank();
         DateInfo dateInfo = new DateInfo(Calendar.getInstance());
+        boolean success = false;
 
         //variable declarations
-        char choice;									//menu item selected
-        boolean not_done = true;						//loop control flag
+        char choice;
+        boolean not_done = true;
+        boolean transactioHistory = false;
 
         // open input test cases file
         //File testFile = new File("/Users/Xiao/IdeaProjects/BankAccount_1/testCases.txt");
         File testFile = new File("testCases.txt");
 
         //create Scanner object
-        //Scanner kybd = new Scanner(testFile);
-        Scanner kybd = new Scanner(System.in);
+        Scanner kybd = new Scanner(testFile);
+        //Scanner kybd = new Scanner(System.in);
 
         // open the output file
         //PrintWriter outFile = new PrintWriter("/Users/Xiao/IdeaProjects/BankAccount_1/output.txt");
-        //PrintWriter outFile = new PrintWriter("output.txt");
-        PrintWriter outFile = new PrintWriter(System.out);
+        PrintWriter outFile = new PrintWriter("output.txt");
+        //PrintWriter outFile = new PrintWriter(System.out);
 
         outFile.println("MUHAMMAD-AZHAR \nCISC 5115-MW9\n");
         /* first part */
@@ -44,6 +46,7 @@ public class BankAccounts {
                 case 'Q':
                     not_done = false;
                     bank.printAccts(bank, outFile);
+                    bank.printAllTransactions(bank, outFile);
                     break;
                 case 'b':
                 case 'B':
@@ -63,7 +66,12 @@ public class BankAccounts {
                     break;
                 case 'i':
                 case 'I':
-                    bank.accountInfo(outFile, kybd);
+                    bank.accountInfo(transactioHistory, outFile, kybd);
+                    break;
+                case 'h':
+                case 'H':
+                    transactioHistory = true;
+                    bank.accountInfo(transactioHistory, outFile,kybd);
                     break;
                 case 'n':
                 case 'N':
@@ -111,23 +119,23 @@ public class BankAccounts {
      */
     public static void menu() {
         System.out.println();
-        System.out.println("Select one of the following transactions:");
-        System.out.println("\t****************************");
-        System.out.println("\t    List of Choices         ");
-        System.out.println("\t****************************");
-        System.out.println("\t     W -- Withdrawal");
-        System.out.println("\t     D -- Deposit");
-        System.out.println("\t     C -- Clear Check");
-        System.out.println("\t     N -- New Account");
-        System.out.println("\t     B -- Balance Inquiry");
-        System.out.println("\t     I -- Account Info");
-        System.out.println("\t     H -- Account Info with Transaction History");
-        System.out.println("\t     S -- Close Account");
-        System.out.println("\t     R -- Reopen a closed Account");
-        System.out.println("\t     X -- Delete Account");
-        System.out.println("\t     Q -- Quit");
+        System.out.println("****************************");
+        System.out.println("List of Choices         ");
+        System.out.println("****************************");
+        System.out.println("Select one of the following transactions:\n");
+        System.out.println("W -- Withdrawal");
+        System.out.println("D -- Deposit");
+        System.out.println("C -- Clear Check");
+        System.out.println("N -- New Account");
+        System.out.println("B -- Balance Inquiry");
+        System.out.println("I -- Account Info");
+        System.out.println("H -- Account Info with Transaction History");
+        System.out.println("S -- Close Account");
+        System.out.println("R -- Reopen a closed Account");
+        System.out.println("X -- Delete Account");
+        System.out.println("Q -- Quit");
         System.out.println();
-        System.out.print("\tEnter your selection: ");
+        System.out.print("Enter your selection: ");
     }
 
     /* Method pause() */

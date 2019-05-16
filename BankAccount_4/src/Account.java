@@ -10,11 +10,10 @@ public class Account {
     private Double acctBal;
     private boolean matDate;
     private boolean acctStat;
-    private ArrayList<Transaction> Transactions = new ArrayList<Transaction>();
-
+    //private ArrayList<Transaction> Transactions = new ArrayList<Transaction>();
+    private ArrayList<Transaction> transactions;
 
     //Constructor
-
     public Account(String fName, String lName, String SSN, int acctNum, String acctType, Double acctBal, boolean matDate, String readAcctStat) {
         depositor = new Depositor(fName, lName, SSN);
         name = new Name(fName, lName);
@@ -23,15 +22,16 @@ public class Account {
         this.acctBal = acctBal;
         this.matDate = matDate;
         setAcctStat(readAcctStat);
-        addTransaction("", acctBal, true,null);
+        transactions = new ArrayList<Transaction>();
+        //addTransaction("", acctBal, true,null);
     }
     //Getters and Setters
-    public void addTransaction(String transactionType, double transactionAmount, boolean successIndicator, String failureReason) {
-        Transactions.add(new Transaction(transactionType, transactionAmount,successIndicator,failureReason));
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
     }
 
     public ArrayList<Transaction> getTransactions() {
-        return Transactions;
+        return transactions;
     }
 
     public Depositor getDepositor() {
@@ -88,5 +88,9 @@ public class Account {
 
     public void setAcctStat(String readAcctStat) {
         this.acctStat = readAcctStat.equals("OPEN") ? true : false;
+    }
+
+    public String toString() {
+        return String.format("%s %-12s | %-8s | $%7.2f | %-12s", depositor, acctNum, acctType, acctBal,acctStat);
     }
 }
