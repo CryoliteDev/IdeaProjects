@@ -14,7 +14,7 @@ public class BankAccounts {
         //variable declarations
         char choice;
         boolean not_done = true;
-        boolean transactioHistory = false;
+        boolean transactionHistory = false;
 
         // open input test cases file
         //File testFile = new File("/Users/Xiao/IdeaProjects/BankAccount_1/testCases.txt");
@@ -47,6 +47,7 @@ public class BankAccounts {
                     not_done = false;
                     bank.printAccts(bank, outFile);
                     bank.printAllTransactions(bank, outFile);
+                    bank.printTotalBalance(outFile);
                     break;
                 case 'b':
                 case 'B':
@@ -66,12 +67,12 @@ public class BankAccounts {
                     break;
                 case 'i':
                 case 'I':
-                    bank.accountInfo(transactioHistory, outFile, kybd);
+                    bank.accountInfo(transactionHistory, outFile, kybd);
                     break;
                 case 'h':
                 case 'H':
-                    transactioHistory = true;
-                    bank.accountInfo(transactioHistory, outFile,kybd);
+                    transactionHistory = true;
+                    bank.accountInfo(transactionHistory, outFile,kybd);
                     break;
                 case 'n':
                 case 'N':

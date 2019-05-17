@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,6 +10,11 @@ public class Bank {
 
     //HOLDS THE BANK ACCOUNT INFO.
     private ArrayList<Account> accounts;
+
+    private static double totalAmountInSavingsAccts = 0;
+    private static double totalAmountInCheckingAccts = 0;
+    private static double totalAmountInCDAccts = 0;
+    private static double totalAmountInAllAccts = 0;
 
     public  Bank() {
         accounts = new ArrayList<Account>();
@@ -335,6 +341,7 @@ public class Bank {
             outFile.println(String.format("New Balance: $%.2f\n", account.getAcctBal()));
             Transaction transaction = new Transaction(requestType, amountToDeposit,true,null);
             account.addTransaction(transaction);
+            addTotalBalance(account.getAcctType(), amountToDeposit);
         }
         outFile.flush();
     }
@@ -475,6 +482,7 @@ public class Bank {
                 outFile.println(String.format("New Balance: $%.2f\n", account.getAcctBal()));
                 Transaction transaction = new Transaction(requestType, amountToWithdraw,true,null);
                 account.addTransaction(transaction);
+                subtractTotalBalance(account.getAcctType(), amountToWithdraw);
             }
         }
 
@@ -840,22 +848,6 @@ public class Bank {
         return null;
     }
 
-
-    /*
-     * Method setAcct()
-     * input:
-     * Bank bank - Constructor which hold the accounts.
-     * totalAccountsReadIn - number of active accounts
-     * fName - first Name
-     * lName  - last Name
-     * SSN - Social Security Number
-     * acctNum - The account Number
-     * acctType - the type of account(Checking, Saving, or CD)
-     * acctBal - the account balance.
-     * matDate
-     * Process:
-     * adds a new account to the array of accounts
-     */
     public void addAccount(Account account) {
         accounts.add(account);
     }
@@ -878,6 +870,56 @@ public class Bank {
         }
     }
 
+    public void printTotalBalance(PrintWriter outFile) {
+        outFile.println(String.format("Total Amount in All Checking Accounts: $%7.2f\n", totalAmountInCheckingAccts));
+        outFile.println(String.format("Total Amount in All Savings Accounts: $%7.2f\n", totalAmountInSavingsAccts));
+        outFile.println(String.format("Total Amount in All CD Accounts $%7.2f\n", totalAmountInCDAccts));
+        outFile.println(String.format("Total Amount in All Accounts: $%7.2f\n", totalAmountInAllAccts));
+        outFile.println();
+        outFile.flush();
+    }
+
+    public void addTotalBalance(String accountType, double amountToDeposit) {
+        switch (accountType) {
+            case "CHECKING":
+                totalAmountInCheckingAccts += amountToDeposit;
+                break;
+            case "SAVINGS":
+                totalAmountInSavingsAccts += amountToDeposit;
+                break;
+            case "CD":
+                totalAmountInCDAccts += amountToDeposit;
+                break;
+            default:
+        }
+        totalAmountInAllAccts += amountToDeposit;
+    }
+
+    public void subtractTotalBalance(String accountType, double amountToWithdraw) {
+        switch (accountType) {
+            case "CHECKING" :
+                totalAmountInCheckingAccts -= amountToWithdraw;
+                break;
+            case "SAVINGS" :
+                totalAmountInSavingsAccts -= amountToWithdraw;
+            case "CD" :
+                totalAmountInCDAccts -= amountToWithdraw;
+                break;
+            default:
+        }
+        totalAmountInAllAccts -= amountToWithdraw;
+    }
+
+    public String toString() {
+        return String.format("Total Amount in All Checking Accounts: $%7.2f \n" +
+                "Total Amount in All Savings Accounts: $%7.2f\n" +
+                "Total Amount in All CD Accounts: $%7.2f\n" +
+                "Total Amount in All Accounts: $%7.2f",
+                totalAmountInCheckingAccts,
+                totalAmountInSavingsAccts,
+                totalAmountInCDAccts,
+                totalAmountInAllAccts);
+    }
     public void addNewAccount(Account account) {
         this.accounts.add(account);
     }
