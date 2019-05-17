@@ -50,3 +50,8 @@ R 864514
 Y
 T
 Q
+
+Checkings: $1314.86
+Savings: $1335.44
+CD:2270.85
+Total: $4924.15

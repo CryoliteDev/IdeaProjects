@@ -52,6 +52,8 @@ public class Bank {
 
             Account account = new Account(fName, lName, SSN, acctNum, acctType, acctBal, matDate, readAcctStat);
             this.addAccount(account);
+
+            addTotalBalance(acctType, acctBal);
         }
 
         //CLOSE THE INPUT FILE

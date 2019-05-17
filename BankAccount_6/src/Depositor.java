@@ -4,6 +4,12 @@ public class Depositor {
     private Name name;
     private String SSN;
 
+    //Copy Constructor
+    public Depositor(Depositor depositor){
+        name = getName();
+        SSN = getSSN();
+    }
+
     //Constructor
     public Depositor(String fName, String lName, String SSN) {
         name = new Name(fName, lName);
@@ -25,5 +31,9 @@ public class Depositor {
 
     public void setSSN(String SSN) {
         this.SSN = SSN;
+    }
+
+    public String toString() {
+        return String.format("%-20s | %-10 |", name, SSN);
     }
 }

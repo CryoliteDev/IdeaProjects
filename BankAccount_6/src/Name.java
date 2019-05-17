@@ -4,6 +4,12 @@ public class Name {
     private String fName;
     private String lName;
 
+    //Copy Constructors
+    public Name(Name name) {
+        fName = name.getfName();
+        lName = name.getlName();
+    }
+
     //Constructor
     public Name(String fName, String lName) {
         this.fName = fName;
@@ -25,5 +31,9 @@ public class Name {
 
     public void setlName(String lName) {
         this.lName = lName;
+    }
+
+    public  String toString() {
+        return String.format("%s %s", fName, lName);
     }
 }

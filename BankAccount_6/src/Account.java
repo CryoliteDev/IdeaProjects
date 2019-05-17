@@ -10,9 +10,22 @@ public class Account {
     private Double acctBal;
     private boolean matDate;
     private boolean acctStat;
-    //private ArrayList<Transaction> Transactions = new ArrayList<Transaction>();
     private ArrayList<Transaction> transactions;
 
+    //Copy Constructor
+    public Account(Account account) {
+        depositor = account.getDepositor();
+        name = account.getName();
+        acctNum = account.getAcctNum();
+        acctType = account.getAcctType();
+        acctBal = account.getAcctBal();
+        matDate = account.getMatDate();
+        if (account.getAcctStat()) {
+            setAcctStat("OPEN");
+        } else if (!account.getAcctStat()) {
+            setAcctStat("CLOSED");
+        }
+    }
     //Constructor
     public Account(String fName, String lName, String SSN, int acctNum, String acctType, Double acctBal, boolean matDate, String readAcctStat) {
         depositor = new Depositor(fName, lName, SSN);

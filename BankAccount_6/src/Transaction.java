@@ -12,6 +12,14 @@ public class Transaction {
         this.failureReason = failureReason;
     }
 
+    //Copy Constructor
+    public Transaction(Transaction transaction) {
+        transactionType = transaction.getTransactionType();
+        transactionAmount = transaction.getTransactionAmount();
+        successIndicator = transaction.isSuccessIndicator();
+        failureReason = transaction.getFailureReason();
+    }
+
     public String getTransactionType() {
         return transactionType;
     }
