@@ -1,4 +1,4 @@
-public class Depositor {
+public class Depositor extends genDepositor {
 
     //Variable Declarations
     private Name name;
@@ -29,8 +29,18 @@ public class Depositor {
         return SSN;
     }
 
+    @Override
+    public void setName(String fName, String lName) {
+
+    }
+
     public void setSSN(String SSN) {
         this.SSN = SSN;
+    }
+
+    @Override
+    public Depositor getDepositor() {
+        return null;
     }
 
     public String toString() {

@@ -1,4 +1,6 @@
-public class Transaction {
+import java.io.PrintWriter;
+
+public class Transaction extends genTransaction{
     private String transactionType;
     private String failureReason;
     private boolean successIndicator;
@@ -48,8 +50,33 @@ public class Transaction {
         return transactionAmount;
     }
 
+    @Override
+    public boolean getTransactionSuccessIndicator() {
+        return false;
+    }
+
+    @Override
+    public String getTransactionFailureReason() {
+        return null;
+    }
+
     public void setTransactionAmount(double transactionAmount) {
         this.transactionAmount = transactionAmount;
+    }
+
+    @Override
+    public void setTransactionSuccessIndicator(boolean successIndicator) {
+
+    }
+
+    @Override
+    public void setTransactionFailureReason(String failureReason) {
+
+    }
+
+    @Override
+    public void printTransactions(Bank bank, PrintWriter outFile) {
+
     }
 
     public String toString() {

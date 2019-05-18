@@ -42,7 +42,7 @@ Error: Account Number: 234648 is Closed
 Transaction Requested: Deposit
 Error: Account Number: 236776 does not exist
 
-Your maturity date has been set to: Sun May 17 19:27:16 EDT 2020
+Your maturity date has been set to: Sun May 17 21:48:14 EDT 2020
 Transaction Requested: Withdrawal CD Account
 Account Number: 783478
 Error: Your Maturity Date is still in Affect
@@ -164,7 +164,7 @@ Amount to Deposit: $300.0
 New Balance: $300.00
 
 
-Your maturity date has been set to: Mon May 17 19:27:16 EDT 2021
+Your maturity date has been set to: Mon May 17 21:48:14 EDT 2021
 Transaction Requested: Deposit CD Account
 Account Number: 765432
 Error: Your Maturity Date is still in Affect

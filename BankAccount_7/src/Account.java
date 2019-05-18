@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Account {
+public class Account extends genAccount{
 
     //Variable declarations
     private Depositor depositor;
@@ -36,8 +36,8 @@ public class Account {
         this.matDate = matDate;
         setAcctStat(readAcctStat);
         transactions = new ArrayList<Transaction>();
-        //addTransaction("", acctBal, true,null);
     }
+
     //Getters and Setters
     public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
@@ -45,6 +45,11 @@ public class Account {
 
     public ArrayList<Transaction> getTransactions() {
         return transactions;
+    }
+
+    @Override
+    public void setDepositor(String fName, String lName, String SSN) {
+
     }
 
     public Depositor getDepositor() {
@@ -78,6 +83,16 @@ public class Account {
         this.acctType = acctType;
     }
 
+    @Override
+    public void setAcctBal(double acctBal) {
+
+    }
+
+    @Override
+    public void addTransaction(String transactionType, double transactionAmount, boolean successIndicator, String failureReason) {
+
+    }
+
     public Double getAcctBal() {
         return acctBal;
     }
@@ -105,5 +120,40 @@ public class Account {
 
     public String toString() {
         return String.format("%s %-12s | %-8s | $%7.2f | %-12s", depositor, acctNum, acctType, acctBal,acctStat);
+    }
+
+    @Override
+    public Account getAccount() {
+        return null;
+    }
+
+    @Override
+    public void setAcctStatus(String acctStatus) {
+
+    }
+
+    @Override
+    public String getAcctStatus() {
+        return null;
+    }
+
+    @Override
+    public void makeDeposit(double amountToDeposit) {
+
+    }
+
+    @Override
+    public void makeWithdrawal(double makeWithdrawal) {
+
+    }
+
+    @Override
+    public void closeAcct() {
+
+    }
+
+    @Override
+    public void reOpenAcct() {
+
     }
 }

@@ -1,4 +1,4 @@
-public class Name {
+public class Name extends genName{
 
     //Variable Declarations
     private String fName;
@@ -31,6 +31,11 @@ public class Name {
 
     public void setlName(String lName) {
         this.lName = lName;
+    }
+
+    @Override
+    public Name getName() {
+        return null;
     }
 
     public  String toString() {

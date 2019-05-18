@@ -15,7 +15,7 @@ public class Bank {
     private static double totalAmountInCheckingAccts = 0;
     private static double totalAmountInCDAccts = 0;
     private static double totalAmountInAllAccts = 0;
-
+    private static DateInfo todaysDate = new DateInfo(2019, 01,2019);
     public  Bank() {
         accounts = new ArrayList<Account>();
     }
@@ -921,6 +921,14 @@ public class Bank {
                 totalAmountInSavingsAccts,
                 totalAmountInCDAccts,
                 totalAmountInAllAccts);
+    }
+
+    public static DateInfo getTodaysDate() {
+        return todaysDate;
+    }
+
+    public static  void setTodaysDate(DateInfo todaysDate) {
+        Bank.todaysDate = todaysDate;
     }
     public void addNewAccount(Account account) {
         this.accounts.add(account);
