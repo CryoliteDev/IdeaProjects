@@ -1,4 +1,4 @@
-MUHAMMAD-AZHAR 
+MUHAMMAD-AZHAR
 CISC 5115-MW9
 
 						*******************************
@@ -8,15 +8,15 @@ CISC 5115-MW9
 First Name       Last Name         Account Type        SSN            Account    Balance    Status
 --------------------------------------------------------------------------------------------------
 Nomaan          |  Khalid          |  CHECKING      |  126-41-2556  | 123456    | $ 200.55 | CLOSED
-Muhammad        |  Azhar           |  SAVINGS       |  128-43-7763  | 123487    | $ 234.34 | OPEN 
-Hero            |  Saitama         |  CHECKING      |  127-48-1256  | 234876    | $  94.12 | OPEN 
-Shoyo           |  Hinata          |  CD            |  128-34-6377  | 783478    | $ 994.03 | OPEN 
+Muhammad        |  Azhar           |  SAVINGS       |  128-43-7763  | 123487    | $ 234.34 | OPEN
+Hero            |  Saitama         |  CHECKING      |  127-48-1256  | 234876    | $  94.12 | OPEN
+Shoyo           |  Hinata          |  CD            |  128-34-6377  | 783478    | $ 994.03 | OPEN
 Atomic          |  Samurai         |  CHECKING      |  127-64-5612  | 234648    | $ 838.39 | CLOSED
 Akito           |  Takagi          |  SAVINGS       |  145-64-6765  | 235389    | $ 637.34 | CLOSED
-Moritaka        |  Mashiro         |  CHECKING      |  654-73-9645  | 675783    | $ 736.74 | OPEN 
+Moritaka        |  Mashiro         |  CHECKING      |  654-73-9645  | 675783    | $ 736.74 | OPEN
 Miho            |  Azuki           |  CD            |  654-37-4695  | 134098    | $ 443.38 | CLOSED
-Eren            |  Yeager          |  CD            |  465-76-4569  | 890431    | $ 833.44 | OPEN 
-Metal           |  Bat             |  SAVINGS       |  128-34-7363  | 345766    | $  28.76 | OPEN 
+Eren            |  Yeager          |  CD            |  465-76-4569  | 890431    | $ 833.44 | OPEN
+Metal           |  Bat             |  SAVINGS       |  128-34-7363  | 345766    | $  28.76 | OPEN
 
 Transaction Requested: Balance Inquiry
 Account Number: 783478
@@ -116,10 +116,10 @@ Account Balance: $443.38
 Transactions for Account: 134098
 **********************************
 
-Transaction Requested: Withdrawal from Check 
-Transaction Amount 0.0 
-Transaction Success:false 
-Reason for Failure: Account is closed 
+Transaction Requested: Withdrawal from Check
+Transaction Amount 0.0
+Transaction Success:false
+Reason for Failure: Account is closed
 
 **END OF TRANSACTIONS FOR THIS ACCOUNT**
 
@@ -272,15 +272,15 @@ Error: "T" is an invalid selection -  try again
 
 First Name       Last Name         Account Type        SSN            Account    Balance    Status
 --------------------------------------------------------------------------------------------------
-Muhammad        |  Azhar           |  SAVINGS       |  128-43-7763  | 123487    | $ 234.34 | OPEN 
+Muhammad        |  Azhar           |  SAVINGS       |  128-43-7763  | 123487    | $ 234.34 | OPEN
 Hero            |  Saitama         |  CHECKING      |  127-48-1256  | 234876    | $ 481.12 | CLOSED
-Shoyo           |  Hinata          |  CD            |  128-34-6377  | 783478    | $ 994.03 | OPEN 
+Shoyo           |  Hinata          |  CD            |  128-34-6377  | 783478    | $ 994.03 | OPEN
 Akito           |  Takagi          |  SAVINGS       |  145-64-6765  | 235389    | $ 637.34 | CLOSED
-Moritaka        |  Mashiro         |  CHECKING      |  654-73-9645  | 675783    | $ 683.74 | OPEN 
+Moritaka        |  Mashiro         |  CHECKING      |  654-73-9645  | 675783    | $ 683.74 | OPEN
 Miho            |  Azuki           |  CD            |  654-37-4695  | 134098    | $ 443.38 | CLOSED
 Eren            |  Yeager          |  CD            |  465-76-4569  | 890431    | $ 833.44 | CLOSED
-Metal           |  Bat             |  SAVINGS       |  128-34-7363  | 345766    | $  28.76 | OPEN 
-Tobio           |  Kageyama        |  SAVINGS       |  123-65-7834  | 435679    | $ 435.00 | OPEN 
+Metal           |  Bat             |  SAVINGS       |  128-34-7363  | 345766    | $  28.76 | OPEN
+Tobio           |  Kageyama        |  SAVINGS       |  123-65-7834  | 435679    | $ 435.00 | OPEN
 Chikara         |  Ennoshita       |  CHECKING      |  457-67-2345  | 764386    | $ 150.00 | CLOSED
 
 						*******************************
@@ -291,11 +291,11 @@ Chikara         |  Ennoshita       |  CHECKING      |  457-67-2345  | 764386    
 Transactions for Account: 123487
 **********************************
 
-Transaction Requested: Deposit 
-Transaction Amount -400.0 
-Transaction Success:false 
+Transaction Requested: Deposit
+Transaction Amount -400.0
+Transaction Success:false
 Reason for Failure: Error: $-400.00 is an invalid amount
- 
+
 
 **END OF TRANSACTIONS FOR THIS ACCOUNT**
 
@@ -303,41 +303,41 @@ Reason for Failure: Error: $-400.00 is an invalid amount
 Transactions for Account: 234876
 **********************************
 
-Transaction Requested: Deposit 
-Transaction Amount 392.0 
-Transaction Success:true 
-Reason for Failure: null 
+Transaction Requested: Deposit
+Transaction Amount 392.0
+Transaction Success:true
+Reason for Failure: null
 
-Transaction Requested: Withdrawal 
-Transaction Amount -50.0 
-Transaction Success:false 
+Transaction Requested: Withdrawal
+Transaction Amount -50.0
+Transaction Success:false
 Reason for Failure: Error: $-50.00 is an invalid amount
- 
 
-Transaction Requested: Withdrawal from Check 
-Transaction Amount -58.0 
-Transaction Success:false 
-Reason for Failure: Error: $-58.00 is an invalid amount 
 
-Transaction Requested: Withdrawal from Check 
-Transaction Amount 1000.0 
-Transaction Success:false 
-Reason for Failure: Error, Withdrawal Amount: $1000.00 is higher then your balance of $483.62 
+Transaction Requested: Withdrawal from Check
+Transaction Amount -58.0
+Transaction Success:false
+Reason for Failure: Error: $-58.00 is an invalid amount
 
-Transaction Requested: Withdrawal 
-Transaction Amount 484.006 
-Transaction Success:false 
-Reason for Failure: Error, Withdrawal Amount: $484.01 is higher then your balance of $481.12 
+Transaction Requested: Withdrawal from Check
+Transaction Amount 1000.0
+Transaction Success:false
+Reason for Failure: Error, Withdrawal Amount: $1000.00 is higher then your balance of $483.62
 
-Transaction Requested: Delete Account 
-Transaction Amount 0.0 
-Transaction Success:false 
-Reason for Failure: This account has a remaining balance of 481.12 please empty the balance and retry 
+Transaction Requested: Withdrawal
+Transaction Amount 484.006
+Transaction Success:false
+Reason for Failure: Error, Withdrawal Amount: $484.01 is higher then your balance of $481.12
 
-Transaction Requested: Close Account 
-Transaction Amount 0.0 
-Transaction Success:true 
-Reason for Failure: null 
+Transaction Requested: Delete Account
+Transaction Amount 0.0
+Transaction Success:false
+Reason for Failure: This account has a remaining balance of 481.12 please empty the balance and retry
+
+Transaction Requested: Close Account
+Transaction Amount 0.0
+Transaction Success:true
+Reason for Failure: null
 
 **END OF TRANSACTIONS FOR THIS ACCOUNT**
 
@@ -345,16 +345,16 @@ Reason for Failure: null
 Transactions for Account: 783478
 **********************************
 
-Transaction Requested: Withdrawal from Check 
-Transaction Amount 0.0 
-Transaction Success:false 
+Transaction Requested: Withdrawal from Check
+Transaction Amount 0.0
+Transaction Success:false
 Reason for Failure: Error: Account Number: 783478 is not a Checking Account
- 
 
-Transaction Requested: REOPEN Account 
-Transaction Amount 0.0 
-Transaction Success:false 
-Reason for Failure: Account is already open 
+
+Transaction Requested: REOPEN Account
+Transaction Amount 0.0
+Transaction Success:false
+Reason for Failure: Account is already open
 
 **END OF TRANSACTIONS FOR THIS ACCOUNT**
 
@@ -368,15 +368,15 @@ Transactions for Account: 235389
 Transactions for Account: 675783
 **********************************
 
-Transaction Requested: Withdrawal 
-Transaction Amount 8.0 
-Transaction Success:true 
-Reason for Failure: null 
+Transaction Requested: Withdrawal
+Transaction Amount 8.0
+Transaction Success:true
+Reason for Failure: null
 
-Transaction Requested: Withdrawal from Check 
-Transaction Amount 45.0 
-Transaction Success:true 
-Reason for Failure: null 
+Transaction Requested: Withdrawal from Check
+Transaction Amount 45.0
+Transaction Success:true
+Reason for Failure: null
 
 **END OF TRANSACTIONS FOR THIS ACCOUNT**
 
@@ -384,15 +384,15 @@ Reason for Failure: null
 Transactions for Account: 134098
 **********************************
 
-Transaction Requested: Withdrawal from Check 
-Transaction Amount 0.0 
-Transaction Success:false 
-Reason for Failure: Account is closed 
+Transaction Requested: Withdrawal from Check
+Transaction Amount 0.0
+Transaction Success:false
+Reason for Failure: Account is closed
 
-Transaction Requested: Close Account 
-Transaction Amount 0.0 
-Transaction Success:false 
-Reason for Failure: Account is already closed 
+Transaction Requested: Close Account
+Transaction Amount 0.0
+Transaction Success:false
+Reason for Failure: Account is already closed
 
 **END OF TRANSACTIONS FOR THIS ACCOUNT**
 
@@ -400,10 +400,10 @@ Reason for Failure: Account is already closed
 Transactions for Account: 890431
 **********************************
 
-Transaction Requested: Close Account 
-Transaction Amount 0.0 
-Transaction Success:true 
-Reason for Failure: null 
+Transaction Requested: Close Account
+Transaction Amount 0.0
+Transaction Success:true
+Reason for Failure: null
 
 **END OF TRANSACTIONS FOR THIS ACCOUNT**
 
@@ -411,10 +411,10 @@ Reason for Failure: null
 Transactions for Account: 345766
 **********************************
 
-Transaction Requested: Withdrawal 
-Transaction Amount 670.65 
-Transaction Success:false 
-Reason for Failure: Error, Withdrawal Amount: $670.65 is higher then your balance of $28.76 
+Transaction Requested: Withdrawal
+Transaction Amount 670.65
+Transaction Success:false
+Reason for Failure: Error, Withdrawal Amount: $670.65 is higher then your balance of $28.76
 
 **END OF TRANSACTIONS FOR THIS ACCOUNT**
 
@@ -422,16 +422,16 @@ Reason for Failure: Error, Withdrawal Amount: $670.65 is higher then your balanc
 Transactions for Account: 435679
 **********************************
 
-Transaction Requested: Deposit 
-Transaction Amount 435.0 
-Transaction Success:true 
-Reason for Failure: null 
+Transaction Requested: Deposit
+Transaction Amount 435.0
+Transaction Success:true
+Reason for Failure: null
 
-Transaction Requested: Withdrawal 
-Transaction Amount -400.0 
-Transaction Success:false 
+Transaction Requested: Withdrawal
+Transaction Amount -400.0
+Transaction Success:false
 Reason for Failure: Error: $-400.00 is an invalid amount
- 
+
 
 **END OF TRANSACTIONS FOR THIS ACCOUNT**
 
@@ -439,20 +439,20 @@ Reason for Failure: Error: $-400.00 is an invalid amount
 Transactions for Account: 764386
 **********************************
 
-Transaction Requested: Deposit 
-Transaction Amount 300.0 
-Transaction Success:true 
-Reason for Failure: null 
+Transaction Requested: Deposit
+Transaction Amount 300.0
+Transaction Success:true
+Reason for Failure: null
 
-Transaction Requested: Withdrawal 
-Transaction Amount 150.0 
-Transaction Success:true 
-Reason for Failure: null 
+Transaction Requested: Withdrawal
+Transaction Amount 150.0
+Transaction Success:true
+Reason for Failure: null
 
-Transaction Requested: Close Account 
-Transaction Amount 0.0 
-Transaction Success:true 
-Reason for Failure: null 
+Transaction Requested: Close Account
+Transaction Amount 0.0
+Transaction Success:true
+Reason for Failure: null
 
 **END OF TRANSACTIONS FOR THIS ACCOUNT**
 
